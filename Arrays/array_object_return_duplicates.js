@@ -1,4 +1,4 @@
-function returnDuplicates(arr){
+function returnDuplicatesObject(arr){
   var i,
   arrLength = arr.length,
   obj = {},
