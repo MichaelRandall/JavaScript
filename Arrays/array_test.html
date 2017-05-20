@@ -2,16 +2,21 @@
 <html>
   <head>
     <title>JS testing</title>
-    <script src="array.js"></script>
+    <script src="array_return_unique.js"></script>
+    <script src="array_return_duplicates.js"></script>
   </head>
   <body>
     <div id="ans1"></div>
     <div id="ans2"></div>
+    <div id="ans3"></div>
     <script>
       var myArr = [1,2,5,2,3,6,4,5,-2,7,21];
       var ans1 = document.getElementById("ans1");
+      var ans2 = document.getElementById("ans2");
 
       ans1.innerHTML = returnUnique(myArr);
+      ans2.innerHTML = returnDuplicates(myArr);
+      ans3.innerHTML = myArr;
     </script>
   </body>
 </html>
