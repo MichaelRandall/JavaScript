@@ -29,9 +29,14 @@ function getMaxVariance(arr){
   for(var k = 0; k < elemHldArr.length; k++){
     console.log(elemHldArr[k].toString() + "\n");
   }
-  console.log(valHldrArr);
-  console.log(arr);
+  console.log("Array of difference values: " + valHldrArr);
+  console.log("Array of initial values: " + arr);
   var biggie = Math.max.apply(Math,valHldrArr);
   var smalls = Math.min.apply(Math,valHldrArr);
   console.log(biggie + " : " + smalls);
+
+  var b = valHldrArr.reduceRight(function(prev, cur){ return prev + cur;});
+
+  console.log("This is all diff values added: " + b);
+  return biggie;
 }
