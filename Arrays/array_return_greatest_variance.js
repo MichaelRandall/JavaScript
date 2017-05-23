@@ -31,6 +31,7 @@ function getMaxVariance(arr){
   }
   console.log(valHldrArr);
   console.log(arr);
-  var biggie = Math.max.apply(null,valHldrArr);
-  console.log(biggie);
+  var biggie = Math.max.apply(Math,valHldrArr);
+  var smalls = Math.min.apply(Math,valHldrArr);
+  console.log(biggie + " : " + smalls);
 }
