@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JS testing</title>
+    <script src="constructor.js"></script>
+  </head>
+  <body>
+    <div id="ans1"></div>
+    <div id="ans2"></div>
+    <div id="ans3"></div>
+    <div id="ans4"></div>
+    <div id="ans5"></div>
+    <div id="ans6"></div>
+    <script>
+      'use strict';
+      //for fun
+      String.prototype.mikeIt = function(){
+        return "It has been Miked!";
+      };
+      var person1 = new Person("Mike","Randall");
+      var myTransportation = new Transportation;
+      var ans1 = document.getElementById("ans1");
+      var ans2 = document.getElementById("ans2");
+      var ans4 = document.getElementById("ans4");
+      var ans5 = document.getElementById("ans5");
+      var ans6 = document.getElementById("ans6");
+
+      ans1.innerHTML = "Shout your name: " + person1.shoutName();
+      ans2.innerHTML = "My transportation is a: " + myTransportation.type;
+      ans3.innerHTML = myTransportation instanceof Transportation;
+      ans4.innerHTML = myTransportation.constructor;
+      ans5.innerHTML = myTransportation.constructor === Transportation;
+
+      var specMessage = "This is awesome!";
+      ans6.innerHTML = "specMessage: <b>" + specMessage + "</b> is now: " + specMessage.mikeIt();
+    </script>
+  </body>
+</html>
