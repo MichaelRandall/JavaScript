@@ -13,30 +13,44 @@ function getMaxVariance(arr){
         elemHldArr.push([arr[i],arr[j]]);
         valHldrArr.push(arr[j] - arr[i]);
       }
-      // if(arr[i] < arr[j]){
-      //   console.log("arrayi is less than arrayj - subtrack i from j");
-      //   var ai = arr[i];
-      //   var aj = arr[j];
-      //   console.log("arrayi = " + arr[i] + ", arrayj = " + arr[j] + ". The difference is: " + (arr[j] - arr[i]));
-      //   hldArr.push(aj - ai);
-      //   //console.log("Ai: " + arr[i] + " Aj: " + arr[j]);
-      //   //bigVar = arr[j] - arr[i];
-      // }else{
-      //   console.log("arrayi is greater than or equal to arrayj - do nothing with it");
-      // }
     }
   }
   for(var k = 0; k < elemHldArr.length; k++){
-    console.log(elemHldArr[k].toString() + "\n");
+    //console.log(elemHldArr[k].toString() + "\n");
   }
-  console.log("Array of difference values: " + valHldrArr);
-  console.log("Array of initial values: " + arr);
+  //console.log("Array of difference values: " + valHldrArr);
+  //console.log("Array of initial values: " + arr);
   var biggie = Math.max.apply(Math,valHldrArr);
   var smalls = Math.min.apply(Math,valHldrArr);
-  console.log(biggie + " : " + smalls);
+  //console.log(biggie + " : " + smalls);
 
   var b = valHldrArr.reduceRight(function(prev, cur){ return prev + cur;});
 
-  console.log("This is all diff values added: " + b);
+  //console.log("This is all diff values added: " + b);
   return biggie;
+}
+
+
+function compare(el,ar){
+	var topHolder = [];
+	for(var i = 0; i < ar.length; i++){
+		if(el < ar[i]);
+		topHolder.push(el - ar[i]);
+	}	
+	return Math.max.apply(topHolder)
+}
+
+function getMaxVar2(arr,callback){
+	
+	var countString, i,
+	arrLen = arr.length,
+	valHldrArr = [];
+	
+	//countString += arrLen.toString();
+	for(i = 0; i<arrLen; i++){
+		var topEl = arr.shift();
+		var dif = compare(topEl,arr);
+	}
+
+	//return countString;
 }
