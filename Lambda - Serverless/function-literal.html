@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+	//Lambda is an expression that is used as data. Meaning that the function is passed as an argument
+	//to another function, returned as a value from a function, or assigned to variables or data structures.
+	
+	//iife's are not lambda - 
+	
+	var mySpecFunct = function(){
+		var myString = "var mySpecFunct = function(){return 'Function literal example with anonymous function'};"
+		return myString;
+	};
+	
+	</script>
+</head>
+<body>
+	<div id="ans1"></div>
+	
+	<script>
+		var value = mySpecFunct();
+		document.getElementById("ans1").textContent = value;
+	</script>
+</body>
+</html>
