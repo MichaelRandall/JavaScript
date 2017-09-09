@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Drag & Drop Example</title>
+		
+		<style>
+			/*main layout*/
+			body{
+				margin: 0;
+				padding: 0;
+				padding-top:10px;
+			}
+			#mainContent{
+				width:920px;
+				border:solid 2px #e6e6e6;
+				border-radius: 10px;
+				padding: 0;
+				margin: 0 auto;
+			}
+			header{
+				width:100%;
+				margin:0;
+				padding:0 auto;
+			}
+			header hgroup h1{
+				margin: 4px 0 4px 0;
+				padding: 0;
+				text-align:center;
+			}
+			
+			/*Count holder and count boxes*/
+			#countHolder{
+				display: flex;
+				width:100%;
+				margin: 0 auto;
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex:1;
+				padding:12px 0;
+				background-color:lightgrey;
+			}
+			.totalBox{
+				width:240px;
+				height:30px;
+				border:solid 2px white;
+				border-radius:6px;
+				margin: 0 auto;
+				text-align: center;
+				/*line-height vertically centers text within the containing div, set it to same or less than height*/
+				line-height:28px;
+			}
+			
+			/*bucketholder and buckets*/
+			#bucketHolder{
+				display: flex;
+				width:100%;
+				margin: 0 auto;
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex:1;
+				padding-top:12px;
+			}
+			.bucket{
+				width:240px;
+				min-height:100px;
+				border:dashed 2px #8c8c8c;
+				border-radius:8px;
+				margin: 0 auto;
+				text-align:center;
+				line-height:96px;
+			}
+			#bucketRed{ background-color: rgba(255,0,0,0.3);}
+			#bucketBlue{ background-color: rgba(0,0,255,0.3);}
+			#bucketGreen{ background-color: rgba(0,255,0,0.3);}
+			
+			/*itemHolder and draggable item*/
+			[draggable] {
+			  -moz-user-select: none;
+			  -khtml-user-select: none;
+			  -webkit-user-select: none;
+			  user-select: none;
+			  /* Required to make elements draggable in old WebKit */
+			  -khtml-user-drag: element;
+			  -webkit-user-drag: element;
+			}
+			#itemHolder{
+				display: flex;
+				width:100%;
+				margin: 0 auto;
+				margin-top: 40px;
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex:1;
+				padding-top:12px;
+			}
+			.item{
+				width:234px;
+				height:94px;
+				border:solid 2px #8c8c8c;
+				border-radius:8px;
+				margin: 0 auto;
+				margin-bottom: 12px;
+				text-align:center;
+				line-height:94px;
+				cursor:move;
+			}
+		</style>
+		
+		<script>
+			function drag(ev){
+				ev.dataTransder.setData('text/html');
+			}
+			
+			function dragStart(ev){ 
+				console.log("Start of drag");
+				ev.dataTransfer.setData('text/html', "You dragged");
+				event.target.style.border = "1px solid #cccccc";
+			}
+			
+			function dragEnd(ev){
+				console.log("End of drag");
+			}
+			
+			//function dragEnter(ev){}
+			
+			function dragOver(ev){
+				ev.preventDefault();
+				return false;
+			}
+			
+			//function dragLeave(ev){}
+			
+			function drop(ev){
+				console.log("dropped");
+				var data = ev.dataTransfer.getData('text/html');
+				ev.preventDefault();
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="mainContent">
+			<header>
+				<hgroup>
+					<h1>Drag & Drop</h1>
+				</hgroup>
+			</header>
+			<div id="countHolder">
+				<div id="countRed" class="totalBox">redCt</div>
+				<div id="countBlue" class="totalBox">blueCt</div>
+				<div id="countGreen" class="totalBox">greenCt</div>
+			</div>
+			<div id="bucketHolder">
+				<div id="bucketRed" class="bucket" draggable="false">drop here</div>
+				<div id="bucketBlue" class="bucket" draggable="false">drop here</div>
+				<div id="bucketGreen" class="bucket" draggable="false">drop here</div>
+			</div>
+			<div id="itemHolder">
+				<!--<div class="item" draggable="true">Drag Me</div>-->
+			</div>
+		</div>
+	<script>
+		var rdCt = 0,blCt = 0,grCt = 0,maxNodes = 10,currentNodeCt = 1;
+		
+		function itemAddDragEventHandlers(theTopElement){
+			theTopElement.addEventListener("dragstart", function(event){
+				event.dataTransfer.setData("Text", event.target.id);
+			});
+			theTopElement.addEventListener("drag", function(event){console.log("dragging");});
+			theTopElement.addEventListener("dragend", function(event){
+				console.log("drag ended");
+			});
+		}
+		
+	
+		function createAndAddNewDroppable(num){
+			try{
+				var itemHolder = document.getElementById("itemHolder");
+				var newDroppable = document.createElement("div");
+				var newText = document.createTextNode(num);
+				newDroppable.appendChild(newText);
+				newDroppable.setAttribute("id","dropper_" + num);
+				newDroppable.setAttribute("class","item");
+				newDroppable.setAttribute("draggable",true);
+				itemHolder.appendChild(newDroppable);
+								
+				var theID = "dropper_" + num;
+				var theElem = document.getElementById(theID);
+				itemAddDragEventHandlers(theElem);
+				
+			}catch(e){
+				console.log(e.message);
+			}
+		}
+		
+		function attachDropEventListeners(bucket){
+			bucket.addEventListener('dragenter', function(event){
+				console.log("Entered drop zone");
+			});
+			bucket.addEventListener('dragover', function(event){
+				event.preventDefault();
+			});
+			bucket.addEventListener('dragleave', function(event){
+				console.log("Leaving drop zone");
+			});
+			bucket.addEventListener('drop', function(event){
+				event.preventDefault();
+				var data = event.dataTransfer.getData("Text");
+				var droppedElem = document.getElementById(data);
+				droppedElem.removeAttribute("draggable");
+				droppedElem.style.cursor = "auto";
+				event.target.appendChild(droppedElem);
+				console.log(data);
+				//this.removeChild(this.firstChild);
+				if(currentNodeCt <= 10){
+					createAndAddNewDroppable(currentNodeCt);
+					currentNodeCt++;
+				}
+			});
+		}
+	
+		
+		window.onload = function(){
+			createAndAddNewDroppable(currentNodeCt);
+			currentNodeCt++;
+			
+			var red = document.getElementById("bucketRed");
+			var blue = document.getElementById("bucketBlue");
+			var green = document.getElementById("bucketGreen");
+			var bktArray = [red, blue, green];
+			
+			bktArray.forEach(function(bucket, index, array){
+				attachDropEventListeners(bucket);
+			});
+		};
+		
+		
+	</script>
+	</body>
+</html>

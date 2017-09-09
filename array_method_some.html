@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+		
+		</title>
+		
+		<style>
+		
+		</style>
+		
+		<script>
+			var namesArray = ["Bill","Jane","Dick","Macy","William","Tom","Dora","Hilda","Judy","Smith"];
+		
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<p id="tst1">This is in main</p>
+		</div>
+	<script>
+		
+		 
+		function checkTom(value, index, array){	
+			return value === "Tom";	
+		}
+	
+		window.onload = function(){
+			var tst1 = document.getElementById("tst1");
+						
+			//using the some method, result depends on what is returned in callback function
+			//takes a callback and the array itself as parameters
+			var someName = namesArray.some(checkTom, namesArray);
+			console.log(someName);
+			
+			if(someName){
+				tst1.textContent = "At least one instance of Tom found, returning: " + someName;
+			}else{
+				tst1.textContent = "No instance of Tom found, returning: " + someName;
+			}
+			
+			
+		};
+	</script>
+	</body>
+</html>
