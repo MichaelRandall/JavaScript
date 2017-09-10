@@ -77,8 +77,9 @@
 			
 			
 			//checking for email format
-			var patEmail = /[A-Z,a-z,0-9]+\@[A-Z,a-z,0-9]+\.com|gov$/
+			var patEmail = /[A-Z,a-z,0-9]+\@[A-Z,a-z,0-9]+\.com|[A-Z,a-z,0-9]+\@[A-Z,a-z,0-9]+\.gov/
 			//parenthesis around options, remembers correct option (com|gov) -> "mike@here.gov" returns "mike@here.gov, gov"
+			//the "[a-z].com | gov" option with exec only returns the second option in this instance "mike@here.gov" returns "gov" not the whole string. to fix: "[a-z].com | [a-z].gov"
 			
 			//emails examples
 			var first = "@bob.com";
