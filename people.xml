@@ -1,0 +1,22 @@
+<people>
+	<person>
+		<firstName></firstName>
+		<lastName></lastName>
+		<status></status>
+	</person>
+	<person>
+		<firstName>Bob</firstName>
+		<lastName>Smith</lastName>
+		<status>Active</status>
+	</person>
+	<person>
+		<firstName>Michelle</firstName>
+		<lastName>Candor</lastName>
+		<status>Active</status>
+	</person>
+	<person>
+		<firstName>Stevie</firstName>
+		<lastName>Raucus</lastName>
+		<status>Inactive</status>
+	</person>
+</people>

@@ -39,6 +39,7 @@
 		<div id="test9"></div>
 		<div id="test10"></div>
 		<div id="test11"></div>
+		<div id="test12"></div>
 		
 	<script>
 		
@@ -102,6 +103,15 @@
 			
 			var tst11 = document.getElementById("test11");
 			tst11.textContent = patEmail.test(fifth) + ", " + patEmail.exec(fifth);
+			
+			var patTxtFour = /[A-Z,a-z]+\-?\d{4}$/;
+			var myStringGood1 = "x9999";
+			var myStringGood2 = "x-9999";
+			var myStringBad1 = "9999";
+			var myStringBad2 = "-9999";
+			var myStringBad3 = "x-99999";
+			var tst12 = document.getElementById("test12");
+			tst12.textContent = patTxtFour.test(myStringGood2) + ", " + patTxtFour.exec(myStringGood2);
 		};
 		
 		
