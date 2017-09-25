@@ -14,8 +14,6 @@
 				width: 10px;
 				height: 10px;
 				position: absolute;
-				left: 20px;
-				top: 20px;
 				border-radius: 10px;
 			}
 		</style>
@@ -23,8 +21,13 @@
 			var squareFactory = function square(sqrElement){
 				this.square = sqrElement;
 				this.square.style.backgroundColor = "rgba(255,10,20,0.5)";
-				this.square.style.width = "100px";
-				this.square.style.left = "200px";
+				this.square.style.width = Math.random() * 100 + "px";
+				this.position = {
+					x: Math.random() * this.square.offsetWidth,
+					y: Math.random() * this.square.offsetHeight,
+				};
+				this.square.style.left = Math.random() * 100 + "px";
+				this.square.style.top = Math.random() * 100 + "px";
 			}
 			
 			function init(){

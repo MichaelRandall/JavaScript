@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Object Generator</title>
+		<style>
+			#holder{
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-moz-box-orient: vertical;
+				-ms-flex-direction: column;
+				-webkit-flex-direction: column;
+				flex-direction: column;
+				justify-content: space-around;
+				width:600px;
+				border:solid blue 2px;
+				position:relative;
+			}
+			.holder-row{
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				border: solid 1px green;
+				background-color:blue;
+			}
+			.blocks{
+				flex-grow:1;
+				border: solid 1px red;
+				height:40px;
+				text-align: center;
+				line-height:40px;
+				margin:0;
+				padding:0;
+			}
+			.btns{
+				flex-grow:1;
+			}
+		</style>
+		<script>
+			function sayMakeModelGlobal(){
+				return this.make + " " + this.model;
+			}
+			
+			function getRandomCar(){
+				//console.log(this.make + " " + this.model);
+				document.getElementById("tst3").innerHTML = this.make + " " + this.model;
+			}
+			
+			var car1 = {
+				make: "Ford",
+				model: "Mustang",
+				sayMakeModel: sayMakeModelGlobal
+			};
+			
+			var car2 = {
+				make: "Dodge",
+				model: "Charger",
+				sayMakeModel: sayMakeModelGlobal
+			};
+			
+			var cars = {
+				data:[
+					{make:"Ford",model:"Mustang"},
+					{make:"Chevy",model:"Malibu"},
+					{make:"Mercedes",model:"S-class"}
+				]
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div id = "holder">
+			<div id = "holder-r1" class="holder-row">
+				<div id = "tst1" class="blocks">Ford Focus</div>
+				<div id = "tst2" class="blocks">Toyota Rav4</div>
+				<div id = "tst3" class="blocks">Ford Fiesta</div>
+				<div id = "tst4" class="blocks">Buick Regal</div>
+				<div id = "tst5" class="blocks">Hyundai Expr</div>
+			</div>
+			
+			<div id = "holder-r2" class="holder-row">
+				<input type="button" id="carPicker" value="View Car">
+				<input type="button" id="carPicker" value="View Car">
+				<input type="button" id="carPicker" value="View Car">
+				<input type="button" id="carPicker" value="View Car">
+				<input type="button" id="carPicker" value="View Car">
+			</div>
+		</div>
+		
+		
+		
+		<input type="button" id="carPicker" value="Click to View Car">
+		<script>
+			document.getElementById("carPicker").addEventListener("click",function(){getRandomCar.call(cars.data[Math.floor(Math.random()*3)])});
+			//document.getElementById("tst1").innerHTML = car1.sayMakeModel();
+			//document.getElementById("tst2").innerHTML = car2.sayMakeModel();
+			//document.getElementById("tst3").innerHTML = getRandomCar.call(cars.data[1]);
+		</script>
+	</body>
+</html>
