@@ -5,23 +5,27 @@
     <script src="array_return_unique.js"></script>
     <script src="array_object_return_duplicates.js"></script>
     <script src="array_array_return_duplicates.js"></script>
+    <script src="array_entries.js"></script>
   </head>
   <body>
     <div id="ans1"></div>
     <div id="ans2"></div>
     <div id="ans3"></div>
     <div id="ans4"></div>
+    <div id="ans5"></div>
     <script>
       var numArr = [1,2,5,2,3,6,4,5,-2,7,21];
       var strngArr = ["bad","dad","sad","cat","top","pot","red","pat","tap","sap","cap"];
       var ans1 = document.getElementById("ans1");
       var ans2 = document.getElementById("ans2");
       var ans4 = document.getElementById("ans4");
+      var ans5 = document.getElementById("ans5");
 
       ans1.innerHTML = "The original array contains " + numArr;
       ans2.innerHTML = "The unique values are " + returnUnique(numArr);
       ans3.innerHTML = "Duplicates using an object are " + returnDuplicatesObject(numArr);
       ans4.innerHTML = "Duplicates using an array are " + returnDuplicatesArray(numArr);
+      ans5.innerHTML = "Indexes and values from an array using 'entries' method " + getEntries(numArr);
     </script>
   </body>
 </html>

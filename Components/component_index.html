@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Components</title>
+    <style>
+      .simple-alert {
+        display:inline-block;
+        position:relative;
+        margin: 0 5px 5px 0;
+        padding: 5px 45px 5px 5px;
+      }
+      .simple-alert.error{
+        background-color: #f06464;
+        border: solid 1px #d91515;
+      }
+      .simple-alert.success{
+        background-color: lightgreen;
+        border: solid 1px #38e038;
+      }
+      .simple-alert.warning{
+        background-color: moccasin;
+        border: solid 1px #ffbf4f;
+      }
+      .simple-alert.default{
+        background-color: lightblue;
+        border: solid 1px #5fb3ce;
+      }
+      .simple-alert__content{
+        color: rgba(0,0,0,0.5);
+      }
+      .simple-alert__dismiss{
+        display:block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: 20px;
+        height: 20px;
+        font-size:0;
+        text-indent: -9999px;
+      }
+    </style>
+
+    <script type='text/javascript'>
+      ;(function(window){
+        'use strict'
+
+        function extend(a, b){
+          for( var key in b ){
+            if( b.hasOwnProperty( key )){
+              a[key] = b[key];
+            }
+          }
+          return a;
+        }
+
+        //simple constructor function to create an object
+        // function SimpleAlert(message){
+        //   this.message = message;
+        //   this._init();
+        // }
+
+        function SimpleAlert(options){
+          this.options = extend({}, this.options);
+          extend(this.options, options);
+          //this._init();
+        }
+
+        SimpleAlert.prototype.options = {
+          wrapper : document.body,
+          type: "default",
+          message: "Default message."
+        }
+
+        // SimpleAlert.prototype._init = function(){
+          //console.log(this.message);
+        //   this.component = document.getElementById("component");
+        //   this.box = document.createElement("div");
+        //   this.box.className = "simple-alert";
+        //   this.box.innerHTML = this.message;
+        //   this.component.appendChild( this.box );
+        // }
+
+        SimpleAlert.prototype._init = function(){
+          this.sa = document.createElement('div');
+          this.sa.className = 'simple-alert' + this.options.type;
+
+          var strinner = '';
+          strinner += '<span class="simple-alert__content">';
+          strinner += this.options.message;
+          strinner   += '</span>';
+          strinner += '<a href="#" class="simple-alert__dismiss">close</a>';
+          this.sa.innerHTML = strinner;
+
+          this._events();
+        };
+
+        window.SimpleAlert = SimpleAlert;
+
+      })(window);
+    </script>
+
+
+  </head>
+  <body>
+    <div id="component">
+      <button id="default">Show Default Message</button>
+      <button id="success">Show Success Message</button>
+      <button id="error">Show Error Message</button>
+    </div>
+
+    <div class="simple-alert TYPE">
+      <span class="simple-alert__content">Message here</span>
+      <a href="#" class="simple-alert__dismiss"></a>
+    </div>
+
+    <script type="text/javascript">
+    ;(function() {
+      /**
+       * Show default
+       */
+      var default_btn = document.getElementById( "default" );
+      default_btn.addEventListener( "click", function() {
+        var default_alert = new SimpleAlert("Hello World!");
+        //default_alert;
+      } );
+
+      /**
+       * Show success
+       */
+      var default_btn = document.getElementById( "success" );
+      default_btn.addEventListener( "click", function() {
+        var default_alert = new SimpleAlert("Success!!");
+        //default_alert;
+      } );
+
+      /**
+       * Show error
+       */
+      var default_btn = document.getElementById( "error" );
+      default_btn.addEventListener( "click", function() {
+        var default_alert = new SimpleAlert("Error...");
+        //default_alert;
+      } );
+
+    })();
+
+    </script>
+  </body>
+
+
+</html>
