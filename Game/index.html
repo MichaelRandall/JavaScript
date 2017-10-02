@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Game</title>
+    <script src="game.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="game_state"></div>
+      <div id="score"></div>
+      <div id="move"></div>
+      <div id="game_state"></div>
+    </div>
+    <script>
+
+      var game_state = document.getElementById("game_state");
+      var score = document.getElementById("score");
+      var move = document.getElementById("move");
+
+      var game = new Game();
+      game_state.innerHTML = game.getGameState();
+      score.innerHTML = game.getScore();
+      move.innerHTML = game.getMoveCount();
+
+      score.addEventListener("click",function(){
+        game.setMoveCount();
+        move.innerHTML = game.getMoveCount();
+      });
+
+
+    </script>
+  </body>
+</html>

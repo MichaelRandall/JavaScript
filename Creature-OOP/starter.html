@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<title>OOP Test</title>
+		
+		
+		<script>
+		
+			var Rectangle = class{
+				constructor(height,width){
+					this.height = height;
+					this.width = width;
+				}
+				
+				get area(){
+					return this.height * this.width;
+				}
+			};
+			
+			let square = new Rectangle(10,10);
+			console.log("The square's area is " + square.area + ".");
+			
+			//named
+			var Animal = function(name,type){
+				this.name = name;
+				this.type = type;
+				this.friends = ["Herb","Velma","Seanna"];
+			};
+			
+			var theAnimal = new Animal("Dexter", "Zebra");
+			console.log("The new animal in the zoo is: " + theAnimal.name);
+			
+			//unnamed
+			function Creature(name, type){
+				this.name = name;
+				this.type = type;
+				var size = "Large";
+				this.getCreatureType = function(){
+					return this.type;
+				};
+			};
+			
+			Creature.prototype.updateName = function(name){
+				this.name = name;
+			};
+			Creature.prototype.updateSize = function(size){
+				this.size = size;
+			};
+			
+			var theCreature = new Creature("Bob","Zombie");
+			console.log("The new creature is: " + theCreature.name + ".\nHere is the type: " +theCreature.getCreatureType() + ".\nHere is the constructor: " + theCreature.constructor);
+			
+			theCreature.updateName("Sammy");
+			console.log("The new name is: " + theCreature.name);
+			
+			theCreature.updateSize("Small");
+			console.log("The new size is: " + theCreature.size);
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		<p id="content1"></p>
+		<p id="content2"></p>
+		<p id="content3"></p>
+		<p id="content4"></p>
+		<p id="content5"></p>
+		<p id="content6"></p>
+		<p id="content7"></p>
+		<p id="content8"></p>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+	function add(x){
+		return x * 100;
+	}
+	
+	function a(x, callback){
+		var newX = x;
+		newX += 10;
+		callback(newX);
+	}
+	
+	</script>
+</head>
+<body>
+	<div id="ans1"></div>
+	
+	<script>
+		var bigValue = a(2, add);
+		document.getElementById("ans1").innerHtml = "<p>rats</p>";
+	</script>
+</body>
+</html>

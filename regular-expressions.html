@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			Regular Expressions Practice
+		</title>
+		
+		<style>
+		
+		</style>
+		
+		<script>
+		
+			var patTxt = /^[A-Z,a-z]/; //first char is letter
+			var patTxtNum = /^[A-Z,a-z,0-9]/; //first char is letter or number
+			var patTxtZeroOrMore = /P/; //first char is a P
+			
+			//checking for social security number format
+			var patSSNum = /[0-9]{3}\-[0-9]{2}\-[0-9]{4}/;  //this expression can be simplified by using the next expression
+			var patSSNumD = /\d{3}\-\d{2}\-\d{4}/;
+			
+			
+		
+		</script>
+	</head>
+	<body>
+		<div id="test1"></div>
+		<div id="test2"></div>
+		<div id="test3"></div>
+		
+		<div id="test4"></div>
+		<div id="test5"></div>
+		<div id="test6"></div>
+		
+		<div id="test7"></div>
+		<div id="test8"></div>
+		<div id="test9"></div>
+		<div id="test10"></div>
+		<div id="test11"></div>
+		<div id="test12"></div>
+		
+	<script>
+		
+		window.onload = function(){
+			
+			var multPPP = "PPPPP";
+			var txtTest = patTxt.test(multPPP);
+			var txtTesta = patTxt.exec(multPPP);
+			var txtnumTest = patTxtNum.test(multPPP);
+			var txtnumTesta = patTxtNum.exec(multPPP);
+			var txtzeromoreTest = patTxtZeroOrMore.test(multPPP);
+			var txtzeromoreTesta = patTxtZeroOrMore.exec(multPPP);
+			
+			var tst1 = document.getElementById("test1");
+			tst1.textContent = "First character is a letter: " + txtTest + ", " + txtTesta;
+			
+			var tst2 = document.getElementById("test2");
+			tst2.textContent = "First character is a letter or a number: " + txtnumTest + ", " + txtnumTesta;
+			
+			var tst3 = document.getElementById("test3");
+			tst3.textContent = "First character is P with zero or more: " + txtzeromoreTest + ", " + txtzeromoreTesta;
+			
+			//ss examples
+			var badSS = "54386-5483";
+			var goodSS = "543-86-5483";
+			
+			var tst4 = document.getElementById("test4");
+			tst4.textContent = patSSNum.test(badSS) + ", " + patSSNum.exec(badSS);
+			
+			var tst5 = document.getElementById("test5");
+			tst5.textContent = patSSNum.test(goodSS) + ", " + patSSNum.exec(goodSS);
+			
+			var tst6 = document.getElementById("test6");
+			tst6.textContent = patSSNumD.test(goodSS) + ", " + patSSNumD.exec(goodSS);
+			
+			
+			
+			//checking for email format
+			var patEmail = /[A-Z,a-z,0-9]+\@[A-Z,a-z,0-9]+\.com|[A-Z,a-z,0-9]+\@[A-Z,a-z,0-9]+\.gov/
+			//parenthesis around options, remembers correct option (com|gov) -> "mike@here.gov" returns "mike@here.gov, gov"
+			//the "[a-z].com | gov" option with exec only returns the second option in this instance "mike@here.gov" returns "gov" not the whole string. to fix: "[a-z].com | [a-z].gov"
+			
+			//emails examples
+			var first = "@bob.com";
+			var second = "e@sim.com";
+			var third = "b@ca.gov";
+			var fourth = "b@c.com";
+			var fifth = "b@.com";
+			
+			var tst7 = document.getElementById("test7");
+			tst7.textContent = patEmail.test(first) + ", " + patEmail.exec(first);
+			
+			var tst8 = document.getElementById("test8");
+			tst8.textContent = patEmail.test(second) + ", " + patEmail.exec(second);
+			
+			var tst9 = document.getElementById("test9");
+			tst9.textContent = patEmail.test(third) + ", " + patEmail.exec(third);
+			
+			var tst10 = document.getElementById("test10");
+			tst10.textContent = patEmail.test(fourth) + ", " + patEmail.exec(fourth);
+			
+			var tst11 = document.getElementById("test11");
+			tst11.textContent = patEmail.test(fifth) + ", " + patEmail.exec(fifth);
+			
+			var patTxtFour = /[A-Z,a-z]+\-?\d{4}$/;
+			var myStringGood1 = "x9999";
+			var myStringGood2 = "x-9999";
+			var myStringBad1 = "9999";
+			var myStringBad2 = "-9999";
+			var myStringBad3 = "x-99999";
+			var tst12 = document.getElementById("test12");
+			tst12.textContent = patTxtFour.test(myStringGood2) + ", " + patTxtFour.exec(myStringGood2);
+		};
+		
+		
+		
+	
+	</script>
+	</body>
+</html>

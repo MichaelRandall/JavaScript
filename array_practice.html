@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+		
+		</title>
+		
+		<style>
+		
+		</style>
+		
+		<script>
+			var numArray = [1,2,4,6,8,9,10];
+		
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<p id="tst1">This is in main</p>
+			<p id="tst2">This is in main</p>
+			<p id="tst3">This is in main</p>
+			<p id="tst4">This is in main</p>
+			<p id="tst5">This is in main</p>
+		</div>
+	<script>
+		function checkEven(value, index, array){
+			if(value % 2 == 0){
+				console.log(value % 2 + ". Index: " + index);
+				return true;
+			}else{
+				console.log(value % 2 + ". Index: " + index);
+			}
+		};
+		
+		function updateVal(val, index, array){
+			return val * 3 / 2;
+		}
+	
+		window.onload = function(){
+			var tst1 = document.getElementById("tst1");
+			var tst2 = document.getElementById("tst2");
+			var tst3 = document.getElementById("tst3");
+			var tst4 = document.getElementById("tst4");
+			var tst5 = document.getElementById("tst5");
+			
+			//using the every method of the array object, takes a callback and reference to the array - this
+			//var allEven = numArray.every(checkEven, this);
+			
+			//if(allEven){
+			//	tst1.textContent = "All numbers are even, returning: " + allEven;
+			//}else{
+			//	tst1.textContent = "Not all numbers are even, returning: " + allEven;
+			//}
+			
+			//using the some method, result depends on what is returned in callback function
+			//takes a callback and the array itself as parameters
+			//var someEven = numArray.some(checkEven, numArray);
+			
+			//if(allEven){
+			//	tst2.textContent = "All numbers are even, returning: " + allEven;
+			//}else{
+			//	tst2.textContent = "Not all numbers are even, returning: " + allEven;
+			//}
+			
+			//using the filter method
+			var filteredVals = numArray.filter(checkEven, numArray);
+			console.log(filteredVals);
+			tst3.textContent = filteredVals.toString();
+			
+			var mapVals = numArray.filter(updateVal, numArray);
+			console.log(mapVals);
+			tst4.textContent = mapVals.toString();
+		};
+	</script>
+	</body>
+</html>

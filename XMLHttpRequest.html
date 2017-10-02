@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+		
+		</title>
+		
+		<style>
+		
+		</style>
+		
+		<script>
+		
+		</script>
+	</head>
+	<body>
+		<div id="tst1"></div>
+		<div id="tst2"></div>
+		<div id="tst3"></div>
+		<div id="tst4"></div>
+		<div id="tst5"></div>
+	<script>
+		var tst1 = document.getElementById("tst1");
+		var tst2 = document.getElementById("tst2");
+		var tst3 = document.getElementById("tst3");
+		var tst4 = document.getElementById("tst4");
+		var tst5 = document.getElementById("tst5");
+		
+		function reqListener(){
+			console.log(JSON.parse(this.responseText));
+			//console.log(JSON.stringify(this.responseText));
+			//console.log(this.response);
+			//tst1.textContent = this.responseText;
+		}
+		
+		window.onload = function(event){
+			console.log(event);
+			var xReq = new XMLHttpRequest();
+			xReq.addEventListener("load", reqListener);
+			xReq.open("GET", "people.json");
+			
+			xReq.onreadystatechange = function(e){
+				if(xReq.readyState == 4 && xReq.status == 200){
+					var specResponseText = xReq.responseText;
+					var specResponse = xReq.response;
+					var keyString = "";
+					var parsedPeople = JSON.parse(xReq.response);
+					var parsedPerson = parsedPeople[0].person;
+					
+					console.log(parsedPerson);
+					for(prop in parsedPerson){
+						keyString += prop+"<br />";
+					}
+					var myDetails = xReq.statusText + "<br /><br />" + xReq.getAllResponseHeaders() + "<br /><br />" + specResponse;
+					tst1.innerHTML = keyString + "<br />" + myDetails;
+				}
+			};
+			xReq.send();	
+		};
+	</script>
+	</body>
+</html>

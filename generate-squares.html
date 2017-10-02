@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Object Generator</title>
+		<style>
+			#holder{
+				width:300px;
+				height:300px;
+				border:solid 2px red;
+				position:relative;
+			}
+			.square{
+				border: 1px solid green;
+				width: 10px;
+				height: 10px;
+				position: absolute;
+				border-radius: 10px;
+			}
+		</style>
+		<script>
+			var squareFactory = function square(sqrElement){
+				this.square = sqrElement;
+				this.square.style.backgroundColor = "rgba(255,10,20,0.5)";
+				this.square.style.width = Math.random() * 100 + "px";
+				this.position = {
+					x: Math.random() * this.square.offsetWidth,
+					y: Math.random() * this.square.offsetHeight,
+				};
+				this.square.style.left = Math.random() * 100 + "px";
+				this.square.style.top = Math.random() * 100 + "px";
+			}
+			
+			function init(){
+				var holder = document.getElementById("holder");
+				for(var i = 0; i <= 1; i++){
+					var sqrElement = document.createElement("div");
+					sqrElement.setAttribute("id","sq_" + i);
+					sqrElement.classList.add("square");
+					
+					holder.appendChild(sqrElement);
+					new squareFactory(sqrElement);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "holder">
+		</div>
+		<script>
+			window.onload = function(){
+				init();
+			};
+		</script>
+	</body>
+</html>

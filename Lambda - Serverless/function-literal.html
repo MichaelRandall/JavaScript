@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+	//Lambda is an expression that is used as data. Meaning that the function is passed as an argument
+	//to another function, returned as a value from a function, or assigned to variables or data structures.
+	//Lambda passing an anonymous function as data to a higher order function
+	
+	//iife's are not lambda - 
+	
+	//example of object literal
+	var myObj = {name:"mike",age:50};
+
+	//example of function literal
+	//the variable is assigned to an anonymous function
+	var mySpecFunct = function(){
+		var myString = "Results from a function literal";
+		return myString;
+	};
+	
+	</script>
+</head>
+<body>
+	<div id="ans1"></div>
+	
+	<script>
+		var value = mySpecFunct();
+		document.getElementById("ans1").textContent = value;
+	</script>
+</body>
+</html>

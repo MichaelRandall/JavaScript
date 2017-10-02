@@ -5,7 +5,12 @@
     <script src="array_return_unique.js"></script>
     <script src="array_object_return_duplicates.js"></script>
     <script src="array_array_return_duplicates.js"></script>
+<<<<<<< HEAD
     <script src="array_entries.js"></script>
+=======
+    <script src="array_return_greatest_variance.js"></script>
+	<script src="array_people_knowing_handshakes.js"></script>
+>>>>>>> 74a8b6e4ab3ecbc6e14b32d0c809b9dc4a2a7898
   </head>
   <body>
     <div id="ans1"></div>
@@ -13,19 +18,40 @@
     <div id="ans3"></div>
     <div id="ans4"></div>
     <div id="ans5"></div>
+<<<<<<< HEAD
+=======
+    <div id="ans6"></div>
+	<div id="ans7"></div>
+	<div id="ans8"></div>
+>>>>>>> 74a8b6e4ab3ecbc6e14b32d0c809b9dc4a2a7898
     <script>
       var numArr = [1,2,5,2,3,6,4,5,-2,7,21];
+      var maxVar = [6,3,7,2,9,4,5];
       var strngArr = ["bad","dad","sad","cat","top","pot","red","pat","tap","sap","cap"];
+	  var people = ["sh1","sh2","Dave","Steve","Mel","Cindy"];
       var ans1 = document.getElementById("ans1");
       var ans2 = document.getElementById("ans2");
       var ans4 = document.getElementById("ans4");
       var ans5 = document.getElementById("ans5");
+<<<<<<< HEAD
+=======
+      var ans6 = document.getElementById("ans6");
+	  var ans7 = document.getElementById("ans7");
+	  var ans8 = document.getElementById("ans8");
+>>>>>>> 74a8b6e4ab3ecbc6e14b32d0c809b9dc4a2a7898
 
       ans1.innerHTML = "The original array contains " + numArr;
       ans2.innerHTML = "The unique values are " + returnUnique(numArr);
       ans3.innerHTML = "Duplicates using an object are " + returnDuplicatesObject(numArr);
       ans4.innerHTML = "Duplicates using an array are " + returnDuplicatesArray(numArr);
+<<<<<<< HEAD
       ans5.innerHTML = "Indexes and values from an array using 'entries' method " + getEntries(numArr);
+=======
+      ans5.innerHTML = "This is the number array for the next value: " + maxVar;
+      ans6.innerHTML = getMaxVariance(maxVar);
+	  //ans7.innerHTML = getMaxVar2(maxVar);
+	  ans8.innerHTML = getPeopleCountPerShake();
+>>>>>>> 74a8b6e4ab3ecbc6e14b32d0c809b9dc4a2a7898
     </script>
   </body>
 </html>

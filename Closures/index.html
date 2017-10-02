@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+	<title>Closure Attack</title>
+	<script src="closure1.js"></script>
+	<script src="closure2.js"></script>
+	</head>
+	
+	<body>
+		<div id="ans1"></div>
+		<div id="ans2"></div>
+		<div id="ans3"></div>
+		<div id="ans4"></div>
+		<div id="ans5"></div>
+		
+		<script>
+			var ans1 = document.getElementById("ans1");
+			var ans2 = document.getElementById("ans2");
+			var ans3 = document.getElementById("ans3");
+			var ans4 = document.getElementById("ans4");
+			var ans5 = document.getElementById("ans5");
+			ans1.innerHTML = tstApp.getSize();
+			ans2.innerHTML = tstApp.getOptions("state");
+			
+			
+			var col = tstApp.getOptions("color");
+			
+			ans3.innerHTML = col;
+			
+			tstApp.setOptions("color","red");
+			
+			ans4.innerHTML = tstApp.getOptions("color");
+			
+			ans5.innerHTML = tsstApp.getOption("color");
+		</script>
+	</body>
+</html>

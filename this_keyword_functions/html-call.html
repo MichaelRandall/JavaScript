@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			Using JavaScript Function Methods Call and Apply
+		</title>
+		
+		<style>
+		
+		</style>
+		
+		<script>
+			//create a global variable
+			var x = 10;
+			
+			//create global function that displays global variable associated with the global object (referenced by this)
+			function changeVariable(message){
+				if(message === undefined){
+					return this.x;
+				}
+				
+				return this.x + " " + message;
+			}
+			
+			function printIt(a, b, c){
+				return "We love " + this.make + " " + a + " " + b + " " + c;
+			}
+			
+			
+		
+		</script>
+	</head>
+	<body>
+		<div id="tst1"><h2>Properties and Methods of the Global Function Object</div>
+		<div id="tst2"></div>
+		
+		<div id="tst3">
+			<h2>Examples using the call method</h2>
+			<p>To invoke the call method, type the function name followed by '.call' and pass in an object. When the function is invoked the this keyword will refer to the object being passed to the function.<br />
+			You can also provide other parameters that can be used in the function. Example: getPrettyName.call(obj,"fast","reject");</p>
+		</div>
+		<div id="tst4"></div>
+		<div id="tst5"></div>
+		<div id="tst6"><h2>Examples using the apply method</h2></div>
+		<div id="tst7"></div>
+		<div id="tst8"></div>
+	<script>
+	
+		var tst1 = document.getElementById("tst1");
+		var tst2 = document.getElementById("tst2");
+		var tst3 = document.getElementById("tst3");
+		var tst4 = document.getElementById("tst4");
+		var tst5 = document.getElementById("tst5");
+		var tst6 = document.getElementById("tst6");
+		var tst6 = document.getElementById("tst7");
+		var tst6 = document.getElementById("tst8");
+		
+		var myObj = {x:"Car"};
+		var carObj = {make:"Ford",model:"Mustang"};
+		var peepsArray = ["Freddy", "Margie", "Mac"];
+		
+		window.onload = function(){
+			console.log(event.type);
+			tst2.innerHTML = "These are properties and methods of the function object: " + Object.getOwnPropertyNames(Function.prototype);
+			tst4.innerHTML = changeVariable();
+			tst5.innerHTML = changeVariable.call(myObj, "this is awesome");
+			tst7.innerHTML = printIt.apply(carObj, peepsArray);
+			
+			
+		};
+	</script>
+	</body>
+</html>

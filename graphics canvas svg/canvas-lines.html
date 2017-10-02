@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			Canvas - Lines
+		</title>
+		
+		<style>
+			canvas{
+				border: 2px solid red;
+			}
+		</style>
+		
+		<script>
+		
+		</script>
+	</head>
+	<body>
+		<canvas id="draw" width="600" height="400">
+			Your browser sucks, and it isn't HTML5 compliant!
+		</canvas>
+	
+	<script>
+		window.onload = function(){
+			var cnvs = document.getElementById("draw");
+			//ctx1 demonstrates the line with different points in canvas using different line methods of context
+			var ctx1 = cnvs.getContext("2d");
+			
+			ctx1.beginPath();
+			ctx1.moveTo(25,25);
+			ctx1.lineTo(100,25);
+			ctx1.lineTo(100,50);
+			ctx1.lineTo(160,50);
+			ctx1.lineTo(160,120);
+			ctx1.lineTo(80,120);
+			ctx1.lineTo(80,140);
+			ctx1.lineTo(25,140);
+			ctx1.lineTo(25,22);
+			ctx1.lineWidth = 5;
+			//ctx1.fillStyle = "rgba(255,140,0,0.5)";
+			ctx1.fillStyle = "rgb(255,140,0)";
+			ctx1.fill();
+			ctx1.strokeStyle = "#06f";
+			ctx1.stroke();
+			
+			//ctx2 demonstrates drawing using the arc method of context
+			var ctx2 = cnvs.getContext("2d");
+			
+			//sAngle	The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
+			//eAngle	The ending angle, in radians
+			//a half circle, starting at 0 or 3, ending angle would be 1*Math.PI
+			//a full circle, starting at 0 or 3, ending angle would be 2*Math.PI
+			//main starting points: 0 = 3 o'clock, 0.5 = 6 o'clock, 1 = 9 o'clock, 1.5 = 12 o'clock
+			
+			ctx2.beginPath();
+			ctx2.arc(200,200,45,0,1*Math.PI,false);
+			ctx2.lineWidth = 10;
+			 
+			ctx2.strokeStyle = "red";
+			ctx2.stroke();
+			
+			//ctx3 demonstrates quadraticCurveTo and its params
+			
+			//440 is at top of curve and 440 away from left side or x value - setting 1/2 between moveTo x and end x makes even.
+			
+			//-150 is at top of curve and -150 away from top??? setting equal to both y points make flat line.
+			//greater than equal to both y point makes loop sag down, less than both y point makes a mound.
+			
+			//480 is the end of line and it is distance from left or x value
+			
+			//280 is end of line and it is distance from top or y value???
+			
+			var ctx3 = cnvs.getContext('2d');
+			ctx3.beginPath();
+			ctx3.moveTo(400,380);
+			
+			ctx3.quadraticCurveTo(440,-300,480,380);
+			ctx3.lineWidth = 10;
+			ctx3.strokeStyle = "green";
+			ctx3.stroke();
+			
+			var ctx4 = cnvs.getContext('2d');
+			ctx4.beginPath();
+			ctx4.arc(64,320,45,0,1.5*Math.PI,false);
+			//ctx4.lineTo(90,320);
+			//ctx4.arc(54,320,45,1*Math.PI,1.5*Math.PI,false);
+			ctx4.lineWidth = 10;
+			ctx4.strokeStyle = "purple";
+			ctx4.stroke();
+			
+			//add an image to the canvas
+			var ctx5 = cnvs.getContext('2d');
+			var img1 = new Image();
+			img1.src = "img_arc.gif";
+			img1.onload = function(){
+				ctx5.globalAlpha = 0.75; //sets tranparency of an image, needs to be called before drawImage
+				ctx5.drawImage(img1,260,110);
+				ctx5.stroke();
+			};
+			
+			//create a pattern in rectangle
+			var ctx6 = cnvs.getContext('2d');
+			ctx6.beginPath();
+			ctx6.rect(150,300,200,50);
+			ctx6.lineWidth = 4;
+			
+			var img2 = new Image();
+			img2.src = "star.png";
+			img2.onload = function(){
+				var pat = ctx6.createPattern(img2, 'repeat');
+				ctx6.fillStyle = pat;
+				ctx6.fill();
+				ctx6.strokeStyle = "orange";
+				ctx6.stroke();
+			};
+		};
+		
+	</script>
+	</body>
+</html>
